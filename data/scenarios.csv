@@ -1,0 +1,6 @@
+scenario,parallel_bp,short_end_bp,long_end_bp
+BASE,0,0,0
+PARALLEL_UP_25BP,25,0,0
+PARALLEL_DN_25BP,-25,0,0
+STEEPENER_25BP,0,-15,15
+FLATTENER_25BP,0,15,-15

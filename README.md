@@ -1,26 +1,22 @@
-# Swap Curve Risk Engine
+# Swap Curve Risk Engine (USD/SOFR)
 
-A reusable Python rates analytics module for curve construction, swap valuation, and DV01/BP01-style sensitivity reporting. Built as a clean portfolio project (no vendor lock-in).
+A reusable Python rates analytics module for **USD SOFR curve construction**, **vanilla swap valuation**, and **DV01/BP01-style sensitivity reporting**.
 
-## What this project does
-- Builds a simple curve layer (discount/forward curve objects)
-- Prices vanilla interest rate swaps (par rate, PV, cashflows)
-- Computes DV01/BP01 via bump-and-reprice
-- Runs scenario shocks (parallel / steepener / flattener) for decision-ready risk views
+> Portfolio project: clean architecture, no vendor lock-in, and an I/O layer that can be mapped to Bloomberg exports.
 
-## Outputs (planned)
-- Curve and par-rate tables across maturities
-- PV and DV01/BP01 tables per trade or portfolio
-- Scenario matrix (PV / DV01 changes under shocks)
-- Basic plots for curve shape and sensitivity distribution
+## Quickstart (runs end-to-end on mock data)
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"
 
-## Repository structure
-- `notebooks/` — example notebooks and demos (coming soon)
-- `src/` — reusable functions/modules (coming soon)
-- `docs/` — one-pager and documentation
+swap-risk --market data/market/usd_sofr_ois_market_quotes.csv          --portfolio data/portfolio/usd_swap_portfolio.csv          --scenarios data/scenarios.csv          --out outputs
+```
 
-## One-pager
-See: `docs/one_pager.pdf` (or the uploaded PDF in `docs/`).
+Outputs:
+- `outputs/curve_nodes.csv`
+- `outputs/portfolio_risk.csv`
+- `outputs/portfolio_cashflows.csv`
+- `outputs/scenario_matrix.csv`
 
 ## Notes
 Educational/portfolio project (not investment advice).
